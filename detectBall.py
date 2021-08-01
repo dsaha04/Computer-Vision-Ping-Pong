@@ -5,9 +5,9 @@ from cvlib.object_detection import draw_bbox
 import time
 
 boundingBOX = ()
-cap = cv2.VideoCapture('cut.mp4')
+cap = cv2.VideoCapture(0)
 
-tracker = cv2.TrackerMIL_create()
+tracker = cv2.TrackerCSRT_create()
 success, img = cap.read()
 bbox, labels, conf = cv.detect_common_objects(img)
 
@@ -20,11 +20,13 @@ try:
     newBBOX = (bbox[i][0], bbox[i][1], bbox[i][2] - bbox[i][0], bbox[i][3] - bbox[i][1])
     boundingBOX = newBBOX
 except:
-    print("billy")
     bbox = cv2.selectROI("Tracking", img, False)
     boundingBOX = bbox
 
+
 print(labels)
+
+
 
 tracker.init(img, boundingBOX)
 
@@ -41,9 +43,9 @@ while True:
     timer = cv2.getTickCount()
     success, img = cap.read()
 
-    success2, bbox = tracker.update(img)
-    print(success2)
-    if success2:
+    success, bbox = tracker.update(img)
+
+    if success:
         drawbox(img, bbox)
     else:
         cv2.putText(img, "Lost", (75, 75), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
