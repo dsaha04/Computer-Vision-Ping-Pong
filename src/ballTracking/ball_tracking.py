@@ -6,6 +6,9 @@ import argparse
 import cv2
 import imutils
 import time
+import random
+from delaunay2D import Delaunay2D
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video",
@@ -31,8 +34,11 @@ else:
 # allow the camera or video file to warm up
 time.sleep(2.0)
 
+queue = []
 # keep looping
+frameCount = 0;
 while True:
+	frameCount += 1
 	# grab the current frame
 	frame = vs.read()
 	# handle the frame from VideoCapture or VideoStream
@@ -44,6 +50,8 @@ while True:
 	# resize the frame, blur it, and convert it to the HSV
 	# color space
 	frame = imutils.resize(frame, width=600)
+	width = int(600)
+	height = int(600 * vs.get(4) / vs.get(3))
 	blurred = cv2.GaussianBlur(frame, (11, 11), 0)
 	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 	# construct a mask for the color "green", then perform
@@ -59,7 +67,18 @@ while True:
 		cv2.CHAIN_APPROX_SIMPLE)
 	cnts = imutils.grab_contours(cnts)
 	center = None
+
+	# draws points for delaunay triangulation
+	for seed in queue:
+		cv2.circle(frame, (seed[0], seed[1]), 10,
+				   (0, 255, 255), 2)
+	if frameCount % 8 == 0:
+		random.shuffle(queue)
+		queue.pop(0)
+		queue.append(np.random.randint(0, [width, height]))
+
 	# only proceed if at least one contour was found
+
 	if len(cnts) > 0:
 		# find the largest contour in the mask, then use
 		# it to compute the minimum enclosing circle and
@@ -69,6 +88,18 @@ while True:
 		M = cv2.moments(c)
 		center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
 		# only proceed if the radius meets a minimum size
+		# DRAWING
+
+		seeds = np.random.randint(0, [width, height])
+		if len(queue) == 0:
+			for i in range(20):
+				queue.append(np.random.randint(0, [width, height]))
+
+		if frameCount % 10 == 0:
+			random.shuffle(queue)
+			queue.pop(0)
+			queue.append([int(x), int(y)])
+
 		if radius > 10:
 			# draw the circle and centroid on the frame,
 			# then update the list of tracked points
