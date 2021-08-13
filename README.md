@@ -7,7 +7,7 @@ I used computer vision through OpenCV Libraries in order to track ping pong ball
 <div className="justify-content-between items-center">
 <center>
     <img src="/images/before.jpeg" alt="Before" width="200"/>
-    <div width="200"> </div>
+    <span width="200"> </span>
     <img src="/images/after.jpeg" alt="After" width="200"/>
 </center>
 </div>
