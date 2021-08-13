@@ -20,7 +20,7 @@ I used computer vision through OpenCV Libraries in order to track ping pong ball
 <div className="justify-content-between items-center">
 <center>
     <img src="/images/bounceResult.gif" alt="Bounce" width="200"/>
-    <img src="/images/bounceWall.gif" alt="Wall Bounce" width="800"/>
+    <img src="/images/bounceWall.gif" alt="Wall Bounce" width="600"/>
 </center>
 </div>
 
