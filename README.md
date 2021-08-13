@@ -24,4 +24,7 @@ I used computer vision through OpenCV Libraries in order to track ping pong ball
 </center>
 </div>
 
-#### Here one can see that by finetuning the color bounds with `range2.py` the tracking algorithm is able to differentiate between the red paddle and orange ping pong ball. Furthermore, the tracking algorithm is also able to pick up on the ball again after it has left the frame once as shown in the second gif which is integral to this project. 
+Here one can see that by finetuning the color bounds with `range2.py` the tracking algorithm is able to differentiate between the red paddle and orange ping pong ball. Furthermore, the tracking algorithm is also able to pick up on the ball again after it has left the frame once as shown in the second gif which is integral to this project.
+
+## 3) Applying Delaunay Effect to Tracking using Bowyer-Watson algorithm for visual effects:
+    -> Run ball_tracking_delaunay.py to see tracking with the effect included!
