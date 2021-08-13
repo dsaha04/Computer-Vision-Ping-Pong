@@ -30,7 +30,7 @@ Here one can see that by finetuning the color bounds with `range2.py` the tracki
     -> Run ball_tracking_delaunay.py to see tracking with the effect included!
 <div className="justify-content-between items-center">
 <center>
-    <img src="/images/delaunayBounce.gif" alt="Delaunay Bounce" width="200"/>
+    <img src="/images/delaunayBounces.gif" alt="Delaunay Bounce" width="200"/>
     <img src="/images/delaunayWall.gif" alt="Delaunay Wall Bounce" width="600"/>
 </center>
 </div>
