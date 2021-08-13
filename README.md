@@ -23,6 +23,6 @@ I used computer vision through OpenCV Libraries in order to track ping pong ball
     <img src="/images/bounceWall.gif" alt="Wall Bounce" width="200"/>
 </center>
 </div>
- Here one can see that by finetuning the color bounds with ```range2.py``` the tracking algorithm is able to differentiate
+ Here one can see that by finetuning the color bounds with `range2.py` the tracking algorithm is able to differentiate
 between the red paddle and orange ping pong ball. Furthermore, the tracking algorithm is also able to pick up
 on the ball again after it has left the frame once as shown in the second gif which is integral to this project.
