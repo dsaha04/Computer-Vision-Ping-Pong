@@ -5,7 +5,7 @@ from cvlib.object_detection import draw_bbox
 import time
 
 boundingBOX = ()
-cap = cv2.VideoCapture('cut.mp4')
+cap = cv2.VideoCapture('../../videos/myrally1.mov')
 
 tracker = cv2.TrackerMIL_create()
 success, img = cap.read()
